@@ -31,7 +31,7 @@ const Hero = () => {
             </button>
 
             <button className="rounded-lg border border-gray-200 bg-white px-7 py-3 text-sm font-medium text-gray-600
-             cursor-pointer  transition hover:border-gray-300 hover:bg-gray-50">
+             transition hover:border-gray-300 hover:bg-gray-50">
               Learn More
             </button>
 

@@ -16,41 +16,30 @@ const App = () => {
   // Add technology
   const handleAdd = (technologyInfo) => {
     const alreadyAdded = selectedStack.some(
-      (stackItem) => stackItem.id === technologyInfo.id
+      (stackItem) => stackItem.id === technologyInfo.id,
     );
 
     if (alreadyAdded) {
-      toast.warning(
-        `${technologyInfo.name} is already in your stack`
-      );
+      toast.warning(`${technologyInfo.name} is already in your stack`);
       return;
     }
 
-    setSelectedStack((previousStack) => [
-      ...previousStack,
-      technologyInfo,
-    ]);
+    setSelectedStack((previousStack) => [...previousStack, technologyInfo]);
 
-    toast.success(
-      `${technologyInfo.name} added to your stack`
-    );
+    toast.success(`${technologyInfo.name} added to your stack`);
   };
 
   // Remove technology
   const handleRemove = (technologyId) => {
     const removedTechnology = selectedStack.find(
-      (stackItem) => stackItem.id === technologyId
+      (stackItem) => stackItem.id === technologyId,
     );
 
     setSelectedStack((previousStack) =>
-      previousStack.filter(
-        (stackItem) => stackItem.id !== technologyId
-      )
+      previousStack.filter((stackItem) => stackItem.id !== technologyId),
     );
 
-    toast.info(
-      `${removedTechnology.name} removed from your stack`
-    );
+    toast.info(`${removedTechnology.name} removed from your stack`);
   };
 
   // Remove all
@@ -66,25 +55,25 @@ const App = () => {
 
       <Hero />
 
-      <div className="container mx-auto grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="mx-auto max-w-[1080px] px-5 lg:px-0">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_300px]">
+          {/* Technology Cards */}
+          <div>
+            <Suspense fallback={<p>Loading...</p>}>
+              <TechnologyList
+                selectedStack={selectedStack}
+                handleAdd={handleAdd}
+              />
+            </Suspense>
+          </div>
 
-        {/* Technology Cards */}
-        <div className="lg:col-span-2">
-          <Suspense fallback={<p>Loading...</p>}>
-            <TechnologyList
-              selectedStack={selectedStack}
-              handleAdd={handleAdd}
-            />
-          </Suspense>
+          {/* Your Stack */}
+          <StackSidebar
+            selectedStack={selectedStack}
+            handleRemove={handleRemove}
+            handleClear={handleClear}
+          />
         </div>
-
-        {/* Your Stack */}
-        <StackSidebar
-          selectedStack={selectedStack}
-          handleRemove={handleRemove}
-          handleClear={handleClear}
-        />
-
       </div>
 
       <Footer />
