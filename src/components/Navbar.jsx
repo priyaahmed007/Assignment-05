@@ -16,11 +16,13 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img
+          <a href="#">
+           <img
             src={logoText}
             alt="Dev Stack Logo"
             className="h-8 w-full rounded-lg object-cover"
           />
+          </a>
 
         </div>
 
@@ -63,12 +65,12 @@ const Navbar = () => {
         </div>
 
         {/* Sign In / Sign Up */}
-        <div className="flex items-center gap-8.75">
+        <div className="flex items-center gap-7">
           <button className="text-sm font-medium text-gray-700 cursor-pointer">
             Sign In
           </button>
 
-          <button className="brand-gradient rounded-full px-5 py-2.5 text-sm font-semibold text-white cursor-pointer">
+          <button className="brand-gradient rounded-full px-5 py-2 text-sm font-semibold text-white cursor-pointer">
             Sign Up
           </button>
         </div>
