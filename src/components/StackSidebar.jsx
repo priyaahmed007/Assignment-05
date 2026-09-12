@@ -5,33 +5,22 @@ const StackSidebar = ({
 }) => {
   return (
     <aside className="lg:sticky lg:top-24 lg:h-fit">
-
       <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
 
         {/* Header */}
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4">
+          <h2 className="text-sm font-bold text-gray-900">
+            Your Stack
+          </h2>
 
-          <div>
-            <h2 className="text-sm font-bold text-gray-900">
-              Your Stack
-            </h2>
-
-            <p className="mt-1 text-[9px] text-gray-400">
-              Selected technologies
-            </p>
-          </div>
-
-          <span className="rounded-full bg-gray-100 px-2 py-1 text-[9px] text-gray-500">
-            {selectedStack.length}
-          </span>
-
+          <p className="mt-1 text-[9px] text-gray-400">
+            {selectedStack.length} Technology Selected
+          </p>
         </div>
 
         {/* Empty Stack */}
         {selectedStack.length === 0 ? (
-
           <div className="rounded-md border border-dashed border-gray-200 px-4 py-10 text-center">
-
             <p className="text-[10px] font-medium text-gray-400">
               Your stack is empty
             </p>
@@ -39,16 +28,11 @@ const StackSidebar = ({
             <p className="mt-1 text-[9px] text-gray-300">
               Add technologies to build your stack
             </p>
-
           </div>
-
         ) : (
-
           /* Selected Items */
           <div className="space-y-2">
-
             {selectedStack.map((technologyInfo) => (
-
               <div
                 key={technologyInfo.id}
                 className="flex items-center justify-between rounded-md border border-gray-100 p-2"
@@ -56,12 +40,11 @@ const StackSidebar = ({
 
                 {/* Technology Info */}
                 <div className="flex items-center gap-2">
-
                   <img
-  src={technologyInfo.icon}
-  alt={technologyInfo.name}
-  className="h-6 w-6 object-contain"
-/>
+                    src={technologyInfo.icon}
+                    alt={technologyInfo.name}
+                    className="h-6 w-6 object-contain"
+                  />
 
                   <div>
                     <p className="text-[10px] font-semibold text-gray-800">
@@ -72,23 +55,17 @@ const StackSidebar = ({
                       {technologyInfo.category}
                     </p>
                   </div>
-
                 </div>
 
                 {/* Remove Button */}
                 <button
-                  onClick={() =>
-                    handleRemove(technologyInfo.id)
-                  }
+                  onClick={() => handleRemove(technologyInfo.id)}
                   className="text-lg leading-none text-gray-300 transition hover:text-red-500"
                 >
                   ×
                 </button>
-
               </div>
-
             ))}
-
           </div>
         )}
 
@@ -103,7 +80,6 @@ const StackSidebar = ({
         )}
 
       </div>
-
     </aside>
   );
 };
